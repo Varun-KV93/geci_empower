@@ -16,4 +16,4 @@ const Story = sequelize.define(
 
 Story.belongsTo(Seller, { foreignKey: "SELLER_ID" });
 
-module.exports = Order;
+module.exports = Story;

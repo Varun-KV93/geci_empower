@@ -6,8 +6,12 @@ const CourseParticipants = require("./courseParticipantsModel");
 const Product = require("./productModel");
 const Order = require("./orderModel");
 const Seller = require("./sellerModel");
-const story = require("./storyModel");
-const Orderitemmodel = require("./orderItemModel")
+const Story = require("./storyModel");
+const Orderitemmodel = require("./orderItemModel");
+const Productrating = require("./productRatingModel");
+const Sellerrating = require("./sellerRatingModel");
+const Courserating = require("./courseRatingModel");
+const Loans = require("./loanModel");
 
 // Define relationships
 Course.belongsTo(User, { foreignKey: "USER_ID" });
@@ -18,6 +22,13 @@ Order.belongsTo(Seller, { foreignKey: "SELLER_ID" });
 Story.belongsTo(Seller, { foreignKey: "SELLER_ID" });
 Orderitemmodel.belongsTo(Order, { foreignKey: "ORDER_ID" });
 Orderitemmodel.belongsTo(Product, { foreignKey: "PRODUCT_ID" });
+Productrating.belongsTo(Product, { foreignKey: "PRODUCT_ID" });
+Productrating.belongsTo(User, { foreignKey: "USER_ID" });
+Sellerrating.belongsTo(Seller, { foreignKey: "SELLER_ID" });
+Sellerrating.belongsTo(User, { foreignKey: "USER_ID" });
+Courserating.belongsTo(Course, { foreignKey: "COURSE_ID" });
+Courserating.belongsTo(User, { foreignKey: "USER_ID" });
+
 // Sync all models
 (async () => {
   await sequelize.sync({ alter: true });
@@ -32,6 +43,11 @@ module.exports = {
   Product,
   Order,
   Seller,
-  story,
+  Story,
   Orderitemmodel,
+  Productrating,
+  Sellerrating,
+  Courserating,
+  Loans,
+
 };
