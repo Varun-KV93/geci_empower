@@ -10,7 +10,7 @@ const generateToken = (user) => {
     { id: user.USER_ID, email: user.EMAIL },
     process.env.JWT_SECRET,
     {
-      expiresIn: "1h",
+    //  expiresIn: "1h",
     }
   );
 };
@@ -29,6 +29,7 @@ exports.register = async (req, res) => {
       EMAIL,
       PASSWORD,
       PHONE,
+      DOB,
       GENDER,
       ADDRESS_LINE1,
       ADDRESS_LINE2,
@@ -51,6 +52,7 @@ exports.register = async (req, res) => {
       EMAIL,
       PASSWORD: hashedPassword,
       PHONE,
+      DOB,
       GENDER,
       ADDRESS_LINE1,
       ADDRESS_LINE2,
