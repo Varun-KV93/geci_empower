@@ -38,6 +38,7 @@ exports.register = async (req, res) => {
       CITY,
       PINCODE,
     } = req.body;
+    
 
     const existingUser = await User.findOne({ where: { EMAIL } });
     if (existingUser)
