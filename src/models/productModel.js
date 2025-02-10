@@ -1,5 +1,6 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/db");
+const Seller = require("./sellerModel");
 
 const Product = sequelize.define(
   "Product",
@@ -12,9 +13,14 @@ const Product = sequelize.define(
     PICTURES: { type: DataTypes.STRING(500) },
     LIKE: { type: DataTypes.STRING(1) },
     LIKE_COUNT: { type: DataTypes.INTEGER },
+    SELLER_ID: { type: DataTypes.INTEGER },
     CREATED_ON: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
+
   },
   { tableName: "PRODUCT", timestamps: false }
 );
+
+
+Product.belongsTo(Seller, { foreignKey: "SELLER_ID" });
 
 module.exports = Product;

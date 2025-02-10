@@ -5,9 +5,9 @@ const Seller = require("./sellerModel");
 const Story = sequelize.define(
   "Story",
   {
-    ID: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    STORY_ID: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     SELLER_ID: { type: DataTypes.INTEGER },
-    PICTURE: { type: DataTypes.STRING(500) },
+    MEDIA: { type: DataTypes.STRING(500) },
     STATUS: { type: DataTypes.STRING(100) },
     CREATED_ON: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
   },

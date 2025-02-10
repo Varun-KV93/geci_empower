@@ -6,6 +6,8 @@ const Order = require("./orderModel");
 const Orderitemmodel = sequelize.define(
   "Orderitemmodel",
   {
+    
+    ORDERITEM_ID: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     ORDER_ID: { type: DataTypes.INTEGER, allowNull: false },
     PRODUCT_ID: { type: DataTypes.INTEGER },
     QUANTITY: { type: DataTypes.INTEGER },

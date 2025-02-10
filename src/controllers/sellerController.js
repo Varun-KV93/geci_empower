@@ -13,13 +13,15 @@ exports.add = async (req, res) => {
 
     const {
       COMPANY_NAME,
-      DESCRIPTION
+      DESCRIPTION,
+      USER_ID
 
     } = req.body;
 
     const newSeller = await Seller.create({
       COMPANY_NAME,
       DESCRIPTION,
+      USER_ID,
     
     });
 

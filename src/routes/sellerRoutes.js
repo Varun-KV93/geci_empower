@@ -10,6 +10,7 @@ router.post(
   [
     body("COMPANY_NAME").notEmpty().withMessage("Name is required"),
     body("DESCRIPTION").notEmpty().withMessage("Description is required"),
+    body("USER_ID").notEmpty().withMessage("User ID is required"),
   ],
   add
 );

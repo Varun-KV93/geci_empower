@@ -6,6 +6,8 @@ const User = require("./userModel");
 const Sellerrating = sequelize.define(
   "Sellerrating",
   {
+    
+    SELLER_RATING_ID: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true  },
     SELLER_ID: { type: DataTypes.INTEGER},
     RATING: { type: DataTypes.INTEGER },
     REVIEW: { type: DataTypes.STRING(500) },
