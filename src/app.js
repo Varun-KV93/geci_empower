@@ -7,6 +7,7 @@ const courseRoutes = require("./routes/courseRoutes");
 const sellerRoutes = require("./routes/sellerRoutes");
 const productRatingRoutes = require("./routes/productRatingRoutes");
 const productListRoutes= require("./routes/productListRoutes");
+const storyRoutes= require("./routes/storyRoutes");
 
 require("dotenv").config();
 
@@ -23,5 +24,6 @@ app.use("/api/course", courseRoutes);
 app.use("/api/seller", sellerRoutes);
 app.use("/api/productrating", productRatingRoutes );
 app.use("/api/product",productListRoutes);
+app.use("/api/story",storyRoutes);
 
 module.exports = app;
