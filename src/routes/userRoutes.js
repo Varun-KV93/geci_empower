@@ -17,7 +17,9 @@ router.post(
     body("PHONE")
       .isMobilePhone("en-IN")
       .withMessage("Invalid phone number format"),
-    body("GENDER").isIn(["M", "F"]).withMessage("Gender must be 'M' or 'F'"),
+    body("GENDER")
+      .isIn(["Male", "Female", "Other"])
+      .withMessage("Gender must be 'M' or 'F'"),
     body("PINCODE")
       .isNumeric()
       .withMessage("Pincode must be a number")

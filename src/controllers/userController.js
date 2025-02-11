@@ -10,7 +10,7 @@ const generateToken = (user) => {
     { id: user.USER_ID, email: user.EMAIL },
     process.env.JWT_SECRET,
     {
-    //  expiresIn: "1h",
+      //  expiresIn: "1h",
     }
   );
 };
@@ -37,8 +37,9 @@ exports.register = async (req, res) => {
       STATE,
       CITY,
       PINCODE,
+      LATITUDE,
+      LONGITUDE,
     } = req.body;
-    
 
     const existingUser = await User.findOne({ where: { EMAIL } });
     if (existingUser)
@@ -61,11 +62,14 @@ exports.register = async (req, res) => {
       STATE,
       CITY,
       PINCODE,
+      LATITUDE,
+      LONGITUDE,
     });
 
     res.status(201).json({
       message: "User registered successfully",
       token: generateToken(newUser),
+      data: newUser,
     });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -87,7 +91,11 @@ exports.login = async (req, res) => {
       return res.status(400).json({ message: "Invalid email or password" });
     }
 
-    res.json({ message: "Login successful", token: generateToken(user) });
+    res.json({
+      message: "Login successful",
+      token: generateToken(user),
+      data: user,
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
