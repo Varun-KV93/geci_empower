@@ -14,8 +14,15 @@ router.post(
     body("PASSWORD")
       .isLength({ min: 6 })
       .withMessage("Password must be at least 6 characters long"),
-    body("PHONE").notEmpty().withMessage("Phone number is required"),
+    body("PHONE")
+      .isMobilePhone("en-IN")
+      .withMessage("Invalid phone number format"),
     body("GENDER").isIn(["M", "F"]).withMessage("Gender must be 'M' or 'F'"),
+    body("PINCODE")
+      .isNumeric()
+      .withMessage("Pincode must be a number")
+      .isLength({ min: 6, max: 6 })
+      .withMessage("Pincode must be exactly 6 digits"),
   ],
   register
 );
