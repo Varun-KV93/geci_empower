@@ -15,7 +15,8 @@ exports.add = async (req, res) => {
       NAME,
       DESCRIPTION,
       COURSE_URL,
-      USER_ID
+      USER_ID,
+    
     } = req.body;
 
     const newCourse = await Course.create({
@@ -23,6 +24,7 @@ exports.add = async (req, res) => {
       DESCRIPTION,
       COURSE_URL,
       USER_ID,
+  
     });
 
     res.status(201).json({

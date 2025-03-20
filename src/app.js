@@ -8,6 +8,8 @@ const sellerRoutes = require("./routes/sellerRoutes");
 const productRatingRoutes = require("./routes/productRatingRoutes");
 const productListRoutes= require("./routes/productListRoutes");
 const storyRoutes= require("./routes/storyRoutes");
+const userUpdateRoutes= require("./routes/userUpdateRoutes");
+const userListRoutes= require("./routes/userListRoutes");
 
 require("dotenv").config();
 
@@ -25,5 +27,7 @@ app.use("/api/seller", sellerRoutes);
 app.use("/api/productrating", productRatingRoutes );
 app.use("/api/product",productListRoutes);
 app.use("/api/story",storyRoutes);
+app.use("/api/user",userUpdateRoutes);
+app.use("/api/user",userListRoutes);
 
 module.exports = app;

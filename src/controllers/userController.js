@@ -1,4 +1,5 @@
 const User = require("../models/userModel");
+const Seller = require("../models/sellerModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { validationResult } = require("express-validator");
@@ -83,9 +84,11 @@ exports.login = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty())
       return res.status(400).json({ errors: errors.array() });
+    
 
     const { EMAIL, PASSWORD } = req.body;
     const user = await User.findOne({ where: { EMAIL } });
+    const seller = await Seller.findOne({ where: { USER_ID } });
 
     if (!user || !(await bcrypt.compare(PASSWORD, user.PASSWORD))) {
       return res.status(400).json({ message: "Invalid email or password" });
@@ -94,7 +97,7 @@ exports.login = async (req, res) => {
     res.json({
       message: "Login successful",
       token: generateToken(user),
-      data: user,
+      data: {...user,seller_id:seller},
     });
   } catch (error) {
     res.status(500).json({ error: error.message });
