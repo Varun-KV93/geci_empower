@@ -11,7 +11,7 @@ const generateToken = (user) => {
     { id: user.USER_ID, email: user.EMAIL },
     process.env.JWT_SECRET,
     {
-      //  expiresIn: "1h",
+      // expiresIn: "1h", // Optional expiry time for the token
     }
   );
 };
@@ -84,20 +84,25 @@ exports.login = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty())
       return res.status(400).json({ errors: errors.array() });
-    
 
     const { EMAIL, PASSWORD } = req.body;
     const user = await User.findOne({ where: { EMAIL } });
-    const seller = await Seller.findOne({ where: { USER_ID } });
 
     if (!user || !(await bcrypt.compare(PASSWORD, user.PASSWORD))) {
       return res.status(400).json({ message: "Invalid email or password" });
     }
 
+    // Fetch seller data related to the user
+    const seller = await Seller.findOne({ where: { USER_ID: user.USER_ID } });
+
+    // Include seller_id in the response
     res.json({
       message: "Login successful",
       token: generateToken(user),
-      data: {...user,seller_id:seller},
+      data: {
+        ...user.toJSON(), // Converts the user object to a plain JSON object
+        seller_id: seller ? seller.SELLER_ID : null, // Include seller_id if seller exists, otherwise null
+      },
     });
   } catch (error) {
     res.status(500).json({ error: error.message });

@@ -1,5 +1,6 @@
 const express = require("express");
 const productListController = require("../controllers/productListController");
+const oneProductListController = require("../controllers/oneProductListController");
 const Product = require("../models/productModel");
 const { validationResult } = require("express-validator");
 require("dotenv").config();
@@ -21,5 +22,7 @@ exports.list = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+router.get("/:id", oneProductListController.getProductDetails);
 
 module.exports = router;

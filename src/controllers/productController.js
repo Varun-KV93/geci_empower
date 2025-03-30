@@ -19,7 +19,8 @@ exports.add = async (req, res) => {
       QUANTITY,
       PICTURES,
       LIKE,
-      LIKE_COUNT
+      LIKE_COUNT,
+      SELLER_ID,
     } = req.body;
 
     const newProduct = await Product.create({
@@ -30,6 +31,7 @@ exports.add = async (req, res) => {
       PICTURES,
       LIKE,
       LIKE_COUNT,
+      SELLER_ID,
     });
 
     res.status(201).json({
