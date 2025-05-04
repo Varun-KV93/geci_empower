@@ -11,7 +11,7 @@ const Product = sequelize.define(
     PRICE: { type: DataTypes.INTEGER, allowNull: false },
     QUANTITY: { type: DataTypes.INTEGER },
     PICTURES: { type: DataTypes.STRING(500) },
-    LIKE: { type: DataTypes.STRING(1) },
+    LIKE: { type: DataTypes.STRING(1000) },
     LIKE_COUNT: { type: DataTypes.INTEGER },
     SELLER_ID: { type: DataTypes.INTEGER, allowNull: false  },
     CREATED_ON: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },

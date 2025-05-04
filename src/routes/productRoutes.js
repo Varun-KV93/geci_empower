@@ -11,6 +11,7 @@ router.post(
     body("NAME").notEmpty().withMessage("Name is required"),
     body("PRICE").notEmpty().withMessage("Price is required"),
     body("SELLER_ID").notEmpty().withMessage("SELLER_ID is required"),
+    // body("SELLER_ID").notEmpty().withMessage("SELLER_ID is required"),
   ],
   add
 );

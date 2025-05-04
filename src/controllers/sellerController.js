@@ -14,7 +14,8 @@ exports.add = async (req, res) => {
     const {
       COMPANY_NAME,
       DESCRIPTION,
-      USER_ID
+      USER_ID,
+      PICTURES
 
     } = req.body;
 
@@ -22,6 +23,7 @@ exports.add = async (req, res) => {
       COMPANY_NAME,
       DESCRIPTION,
       USER_ID,
+      PICTURES,
     
     });
 

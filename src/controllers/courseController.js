@@ -16,6 +16,7 @@ exports.add = async (req, res) => {
       DESCRIPTION,
       COURSE_URL,
       USER_ID,
+      FEES,
     
     } = req.body;
 
@@ -24,6 +25,7 @@ exports.add = async (req, res) => {
       DESCRIPTION,
       COURSE_URL,
       USER_ID,
+      FEES,
   
     });
 

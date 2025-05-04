@@ -28,6 +28,7 @@ exports.getSellerByUserId = async (req, res) => {
 
     // Find the seller associated with this user
     const seller = await Seller.findOne({ where: { USER_ID: user.USER_ID } });
+    console.log(seller);
 
     // If seller not found, return 404
     if (!seller) {
@@ -38,6 +39,7 @@ exports.getSellerByUserId = async (req, res) => {
     res.status(200).json({
       message: "Seller retrieved successfully",
       seller,
+      
     });
   } catch (error) {
     res.status(500).json({ error: error.message });

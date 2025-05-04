@@ -12,6 +12,7 @@ router.post(
     body("DESCRIPTION").notEmpty().withMessage("Description is required"),
     body("COURSE_URL").notEmpty().withMessage("course url is required"),
     body("USER_ID").notEmpty().withMessage("user id is required"),
+    body("FEES").notEmpty().withMessage("fees is required"),
   
 
   ],

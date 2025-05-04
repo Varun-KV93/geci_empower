@@ -13,6 +13,9 @@ const Sellerrating = require("./sellerRatingModel");
 const Courserating = require("./courseRatingModel");
 const Loans = require("./loanModel");
 const Payment = require("./paymentModel");
+const Cart = require("./cartModel");
+const Wishlist = require("./wishlistModel");
+
 
 // Define relationships
 Course.belongsTo(User, { foreignKey: "USER_ID" });
@@ -34,6 +37,13 @@ Payment.belongsTo(User, { foreignKey: "USER_ID" });
 Loans.belongsTo(User, { foreignKey: "USER_ID" });
 Order.belongsTo(Payment, { foreignKey: "PAYMENT_ID" });
 CourseParticipants.belongsTo(Payment, { foreignKey: "PAYMENT_ID" });
+Wishlist.belongsTo(User, { foreignKey: "USER_ID" });
+Wishlist.belongsTo(Seller, { foreignKey: "SELLER_ID" });
+Wishlist.belongsTo(Product, { foreignKey: "PRODUCT_ID" });
+Cart.belongsTo(User, { foreignKey: "USER_ID" });
+Cart.belongsTo(Seller, { foreignKey: "SELLER_ID" });
+Cart.belongsTo(Product, { foreignKey: "PRODUCT_ID" });
+
 
 // Sync all models
 (async () => {
@@ -56,5 +66,7 @@ module.exports = {
   Courserating,
   Loans,
   Payment,
+  Wishlist,
+  Cart,
 
 };

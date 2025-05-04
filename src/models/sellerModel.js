@@ -8,7 +8,8 @@ const Seller = sequelize.define(
     SELLER_ID: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     COMPANY_NAME: { type: DataTypes.STRING(100) },
     DESCRIPTION: { type: DataTypes.STRING(500) },
-    USER_ID: { type: DataTypes.INTEGER},
+    PICTURES: { type: DataTypes.STRING(500) },
+    USER_ID: { type: DataTypes.INTEGER,unique: true},
     CREATED_ON: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
   },
   { tableName: "SELLER", timestamps: false }
